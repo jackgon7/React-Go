@@ -6,16 +6,20 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "http-proxy-middleware": "^2.0.0",
+    "nodemon": "^2.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all -p react-run",
+    "react-run": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "go-run": "nodemon main.go"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +38,21 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*mod",
+      "*json",
+      "*lock",
+      "node_modules"
+    ],
+    "execMap": {
+      "go": "go run"
+    },
+    "watch": [
+      "main.go",
+      "server/"
+    ],
+    "ext": "go"
   }
 }
